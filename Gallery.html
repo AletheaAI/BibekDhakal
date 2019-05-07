@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>html,body{
+    
+}
+.galleryContainer{
+    position: relative;
+    width: 100%;
+    height: 500px;
+    max-width: 1000px;
+    margin: auto;
+    user-select: none;
+    box-shadow: 0px 0px 100px 1px #00000078;
+    padding: 10px;
+    align-content: center;
+    box-sizing: border-box;
+    top: -550px;
+    margin-top: 500px;
+    margin-left: 0px;
+    margin-right: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+}
+.galleryContainer .slideShowContainer{
+    width: 100%;
+    height: 90%;
+    overflow: hidden;
+    background-color: gainsboro;
+    position: relative;
+}
+
+.galleryContainer .slideShowContainer .imageHolder{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+}
+.galleryContainer .slideShowContainer .imageHolder img{
+    width: 100%;
+    height: 100%;
+}
+.galleryContainer .slideShowContainer .imageHolder .captionText{
+    display: none;
+    
+}
+
+.galleryContainer .slideShowContainer .leftArrow,.galleryContainer .slideShowContainer .rightArrow{
+    width: 50px;
+    background: #00000036;
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    transition: background 0.5s;
+    height: 72px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.galleryContainer .slideShowContainer .rightArrow{
+    left: auto;
+    right: 0;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+.galleryContainer .slideShowContainer .leftArrow:hover,.galleryContainer .slideShowContainer .rightArrow:hover{
+    background: #000000a8;
+    cursor: pointer;
+}
+.galleryContainer .arrow{
+    display: inline-block;
+    border: 3px solid white;
+    width: 10px;
+    height: 10px;
+    border-left: none;
+    border-bottom: none;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+.galleryContainer .arrow.arrowLeft{
+    transform: rotateZ(-135deg);
+}
+.galleryContainer .arrow.arrowRight{
+    transform: rotateZ(45deg);
+}
+
+
+.galleryContainer .slideShowContainer>.captionTextHolder{
+    position: absolute;
+    bottom: 0;
+    z-index: 1;
+    color: white;
+    font-family: sans-serif;
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    background: #00000047;
+    height: 50px;
+    line-height: 50px;
+    overflow: hidden;
+}
+.galleryContainer .slideShowContainer>.captionTextHolder>.captionText{
+    margin: 0;
+}
+
+.galleryContainer #dotsContainer{
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    padding-top: 20px;
+    box-sizing: border-box;
+}
+.galleryContainer #dotsContainer .dots{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin-left: 5px;
+    background-color: #bbb;
+    cursor: pointer;
+    transition:background-color 0.5s;
+}
+.galleryContainer #dotsContainer .dots:first-child{
+    margin-left: 0;
+}
+.galleryContainer #dotsContainer .dots:hover,.galleryContainer #dotsContainer .dots.active{
+    background-color: #717171;;
+}
+
+
+
+
+.galleryContainer .moveLeftCurrentSlide{
+    animation-name: moveLeftCurrent;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode:forwards;
+
+}
+.galleryContainer .moveLeftNextSlide{
+    animation-name: moveLeftNext;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode:forwards;
+}
+@keyframes moveLeftCurrent {
+    from {margin-left: 0;opacity: 1;}
+    to {margin-left: -100%;opacity: 1;}
+}
+@keyframes moveLeftNext {
+    from {margin-left: 100%;opacity: 1;}
+    to {margin-left: 0%;opacity: 1;}
+}
+
+
+.galleryContainer .moveRightCurrentSlide{
+    animation-name: moveRightCurrent;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode:forwards;
+}
+.galleryContainer .moveRightPrevSlide{
+    animation-name: moveRightPrev;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-fill-mode:forwards;
+}
+@keyframes moveRightCurrent {
+    from {margin-left: 0;opacity: 1;}
+    to {margin-left: 100%;opacity: 1;}
+}
+@keyframes moveRightPrev {
+    from {margin-left: -100%;opacity: 1;}
+    to {margin-left: 0%;opacity: 1;}
+}
+.slideTextFromBottom {
+    animation-name: slideTextFromBottom;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-out;
+}
+@keyframes slideTextFromBottom {
+    from {opacity: 0;margin-top: 100px}
+    to {opacity: 1;margin-top: 0px;}
+}
+.slideTextFromTop {
+    animation-name: slideTextFromTop;
+    animation-duration: 0.7s;
+    animation-timing-function: ease-out;
+}
+@keyframes slideTextFromTop {
+    from {opacity: 0;margin-top: -100px}
+    to {opacity: 1;margin-top: 0px;}
+}
+</style>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <title>Arch</title>
+   <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Gugi" rel="stylesheet"> 
+    <link rel="stylesheet" href="footer.css">
+
+	  <link href="https://fonts.googleapis.com/css?family=Fredericka+the+Great|Gugi" rel="stylesheet"> 
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
+	<link href="http://fonts.googleapis.com/css?family=Cookie" rel="stylesheet" type="text/css">
+</head>
+
+<body style="background-image: url(images/body.png); background-blend-mode:soft-light;">
+  <nav id="mainNav">
+    <div class="logo">
+      <a href="index.html">
+        <img src="img/logo.png" alt="ARCH Logo">
+      </a>
+    </div>
+    <ul>     
+      <li>
+        <a href="cv.html">CV</a>
+      </li> 
+      <li> 
+        <a href="blog.html">blog</a>
+      <li>
+        <a href="Gallery.html">gallery</a><!--submit form-->
+      </li>
+      <li>
+        <a href="research.html">research</a>
+      </li>
+      <li>
+        <a href="contact.html">contact</a>
+      </li>
+    </ul>
+  </nav>
+    <div style="  max-width: 960px;
+  margin: 90px auto;
+  padding: 32px;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+    <section class="s1" style="height: 520px;">
+<div class="galleryContainer" style="align-content: center">
+    <div class="slideShowContainer">
+        
+        <div onclick="plusSlides(-1)" class="nextPrevBtn leftArrow"><span class="arrow arrowLeft"></span></div>
+        <div onclick="plusSlides(1)" class="nextPrevBtn rightArrow"><span class="arrow arrowRight"></span></div>
+        <div class="captionTextHolder"><p class="captionText slideTextFromTop"></p></div>
+        <div class="imageHolder">
+            <img src="images/img_1.jpg">1366X768
+            <p class="captionText">Caption Text-01</p>
+        </div>
+        <div class="imageHolder">
+            <img src="images/img_2.jpg">
+            <p class="captionText">Caption Text-02</p>
+        </div>
+        <div class="imageHolder">
+            <img src="images/img_3.jpg">
+            <p class="captionText">Caption Text-03</p>
+        </div>
+        <div class="imageHolder">
+            <img src="images/img_4.jpg">
+            <p class="captionText">Caption Text-04</p>
+        </div>
+    </div>
+    <div id="dotsContainer"></div>
+</div></section>
+   <section class="s2" style="height: 520px;">
+        <h1>Nature</h1>
+       <br><br> <h5>
+       To a few, nature may be a marvel counting plants, creatures, the scene, the soil, the ocean, the waterway, the sea, the sky, the sun, the moon, the tree, the bloom, the world, the universe and the animals; to others, it is human brain research, human thought, human nature counting starvation, thirst, outrage; whereas a few others tend to accept it is everything that lies past the scope of our faculties and perceptiveness—to specify fair some conceivable outcomes!
+       Nature, within the broadest sense, is proportionate to the common world, physical world, or fabric world. "Nature" alludes to the wonders of the physical world, conjointly to life in common. It ranges in scale from the subatomic to the infinite.
+       The term "nature" may allude to living plants and creatures, geographical forms, climate, and material science, such as matter and vitality. The term is frequently alludes to the "characteristic environment" or wilderness—wild creatures, rocks, timberland, shorelines, and in common regions that have not been significantly changed by people, or which endure in spite of human intercession. For, case, fabricated objects and human interaction are by and large not considered portion of nature, unless qualified as, for case, "human nature" or "the full of nature". This more conventional concept of "nature" infers a refinement between normal and manufactured components of the Soil, with the manufactured as that which has been brought into being by a human awareness or a human intellect.</h5>
+       
+       
+        
+        </section>
+
+    </div>
+		<footer class="footer-distributed">
+
+			<div class="footer-left">
+
+				<h3>Port<span>folio</span></h3>
+
+				<p class="footer-links">
+					<a href="index.html">Home</a>
+					·
+					<a href="blog.html">Blog</a>
+					.
+					<a href="contact.html">contact</a>
+					·
+					<a href="cv.html">CV</a>
+					·
+					<a href="research.html">Contact</a>
+                    .
+                    <a href="Gallery.html">gallery</a>
+				</p>
+
+				<p class="footer-username">Bibek Dhakal &copy; 2019-2020</p>
+			</div>
+
+			<div class="footer-center">
+
+				<div>
+					<i class="fa fa-map-marker"></i>
+					<p><span>Machhapokhari</span> Kathmandu, Nepal</p>
+				</div>
+
+				<div>
+					<i class="fa fa-phone"></i>
+					<p>+977-9800000000</p>
+				</div>
+
+				<div>
+					<i class="fa fa-envelope"></i>
+					<p><a href="https://mail.google.com/mail/u/0/#sent?compose=CllgCJlFmNHzcqXzVdjbCDHTJCLJFktPFPTxdDXQCTqXMpZGgCCtCDnwtBTnSRppPqMJXrnmlRg">bibekdhakal721@gmail.com</a></p>
+				</div>
+
+			</div>
+
+			<div class="footer-right">
+
+				<p class="footer-about-portfolio">
+					<span>About this Portfolio</span>
+					i am planning to write some details. no now...
+				</p>
+
+				<div class="footer-icons">
+
+					<a href="https://www.facebook.com/messages/t/bibek.dhakal.963"><i class="fa fa-facebook"></i></a>
+					<a href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
+					<a href="https://www.linkedin.com/"><i class="fa fa-linkedin"></i></a>
+					<a href="https://github.com/notifications"><i class="fa fa-github"></i></a>
+
+				</div>
+
+			</div>
+        
+		</footer>
+<script src="main.js"></script>
+<script src="love.js"></script>
+    </body>
+</html>
